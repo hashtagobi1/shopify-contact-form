@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, TextContainer, Text } from "@shopify/polaris";
+import { Card, TextContainer, Text, Button } from "@shopify/polaris";
 import { Toast } from "@shopify/app-bridge-react";
 import { useTranslation } from "react-i18next";
 import { useAppQuery, useAuthenticatedFetch } from "../hooks";
@@ -50,6 +50,17 @@ export function ProductsCard() {
     }
   };
 
+  const handleLog = async () => {
+    setIsLoading(true);
+    const res = await fetch("/api/products/");
+    if (res.ok) {
+      console.log({ res });
+    } else {
+      alert("Woops!");
+    }
+    console.log("hi");
+  };
+
   return (
     <>
       {toastMarkup}
@@ -73,6 +84,9 @@ export function ProductsCard() {
             </Text>
           </Text>
         </TextContainer>
+        <Button tone={"success"} loading={!setIsLoading} onClick={() => handleLog()}>
+          Log Products
+        </Button>
       </Card>
     </>
   );

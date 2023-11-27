@@ -32,7 +32,8 @@ export default function HomePage() {
               <Stack.Item fill>
                 <TextContainer spacing="loose">
                   <Text as="h2" variant="headingMd">
-                    {t("HomePage.heading")}
+                    {/* {t("HomePage.heading")} */}
+                    Hi
                   </Text>
                   <p>
                     <Trans

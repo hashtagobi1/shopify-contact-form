@@ -1,3 +1,23 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
+name = "first-app-extension"
+client_id = "91db64c231006148f307fdea08763893"
+application_url = "https://pitch-boston-feels-selection.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://pitch-boston-feels-selection.trycloudflare.com/auth/callback",
+  "https://pitch-boston-feels-selection.trycloudflare.com/auth/shopify/callback",
+  "https://pitch-boston-feels-selection.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false

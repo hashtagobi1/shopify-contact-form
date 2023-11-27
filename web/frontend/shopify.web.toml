@@ -3,3 +3,6 @@ roles = ["frontend"]
 [commands]
 dev = "npm run dev"
 build = "npm run build"
+
+[access_scopes]
+scopes = "write_products,read_products"
