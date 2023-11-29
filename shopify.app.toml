@@ -2,7 +2,7 @@
 
 name = "first-app-extension"
 client_id = "91db64c231006148f307fdea08763893"
-application_url = "https://pitch-boston-feels-selection.trycloudflare.com"
+application_url = "https://problem-positions-floral-eight.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://pitch-boston-feels-selection.trycloudflare.com/auth/callback",
-  "https://pitch-boston-feels-selection.trycloudflare.com/auth/shopify/callback",
-  "https://pitch-boston-feels-selection.trycloudflare.com/api/auth/callback"
+  "https://problem-positions-floral-eight.trycloudflare.com/auth/callback",
+  "https://problem-positions-floral-eight.trycloudflare.com/auth/shopify/callback",
+  "https://problem-positions-floral-eight.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -21,3 +21,7 @@ api_version = "2023-10"
 
 [pos]
 embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "coursecontactform.myshopify.com"
