@@ -42,7 +42,7 @@ export default function Form() {
         <div className="tw-mb-4">
           <label
             htmlFor="name"
-            className="tw-block tw-text-sm tw-font-medium tw-text-black"
+            className="tw-block tw-text-md  tw-font-medium tw-text-black"
           >
             Name
           </label>
@@ -60,7 +60,7 @@ export default function Form() {
         <div className="tw-mb-4">
           <label
             htmlFor="email"
-            className="tw-block tw-text-sm tw-font-medium tw-text-black"
+            className="tw-block tw-text-md  tw-font-medium tw-text-black"
           >
             Email
           </label>
@@ -78,7 +78,7 @@ export default function Form() {
         <div className="tw-mb-4">
           <label
             htmlFor="description"
-            className="tw-block tw-text-sm tw-font-medium tw-text-black"
+            className="tw-block tw-text-md  tw-font-medium tw-text-black"
           >
             Description
           </label>

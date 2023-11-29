@@ -2,7 +2,7 @@
 
 name = "first-app-extension"
 client_id = "91db64c231006148f307fdea08763893"
-application_url = "https://problem-positions-floral-eight.trycloudflare.com"
+application_url = "https://college-webpage-nitrogen-counters.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://problem-positions-floral-eight.trycloudflare.com/auth/callback",
-  "https://problem-positions-floral-eight.trycloudflare.com/auth/shopify/callback",
-  "https://problem-positions-floral-eight.trycloudflare.com/api/auth/callback"
+  "https://college-webpage-nitrogen-counters.trycloudflare.com/auth/callback",
+  "https://college-webpage-nitrogen-counters.trycloudflare.com/auth/shopify/callback",
+  "https://college-webpage-nitrogen-counters.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
