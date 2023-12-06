@@ -29,3 +29,12 @@ model ContactForm {
   description String
   createdAt   DateTime @default(now())
 }
+
+model Shop {
+  id                    Int    @id @default(autoincrement())
+  shopName              String
+  logged_in_customer_id String @unique
+  path_prefix           String
+  timestamp             Int
+  signature             String
+}

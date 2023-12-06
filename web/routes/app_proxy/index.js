@@ -1,6 +1,8 @@
 import { Router } from "express"
+import { PrismaClient } from "@prisma/client"
 
 const proxyRouter = Router()
+const prisma = new PrismaClient()
 
 proxyRouter.get("/test", async (req, res) => {
     return res.status(200).send({
@@ -15,20 +17,31 @@ proxyRouter.get("/", async (req, res) => {
 })
 
 proxyRouter.post("/contact-form", async (req, res) => {
+    const { body: { name, email, description }, query: {shop} } = req
     console.log({ Body: req.body })
     console.log({ Query: req.query })
-    return res.status(200).send({
-        success: true
-    })
+    console.log({ NN: email })
+    try {
+        const contactForm = await prisma.contactForm.create({
+            data: {
+                name,
+                email,
+                description,
+                shop,
+                createdAt: new Date(),
+            }
+        })
+        console.log({ PassedINData: contactForm })
+        return res.status(200).send({
+            success: true,
+            data: contactForm
+        })
+    } catch (error) {
+        console.log(`ERROR: Please See  ${error}`)
+        return res.status(500).send({ success: false })
+    }
+
+
 })
 
 export default proxyRouter
-
-
-// const authenticatedFetch = useAuthenticatedFetch();
-// const fetch = useMemo(() => {
-//     return async () => {
-//         const response = await authenticatedFetch(url, fetchInit);
-//         return response.json();
-//     };
-// }, [url, JSON.stringify(fetchInit)]);

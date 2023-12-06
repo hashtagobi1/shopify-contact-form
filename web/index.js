@@ -9,6 +9,10 @@ import productCreator from "./product-creator.js";
 import GDPRWebhookHandlers from "./gdpr.js";
 import verifyProxy from "./middleware/verifyProxy.js";
 import proxyRouter from "./routes/app_proxy/index.js";
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient();
+
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -40,7 +44,34 @@ app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
-app.use("/proxy_route", verifyProxy, proxyRouter)
+app.use("/proxy_route", verifyProxy, proxyRouter);
+
+app.get("/api/get-data", async (req, res) => {
+
+  const shop = res.locals.shopify.session.shop;
+  console.log({ RES: shop })
+
+
+  try {
+    if (!shop) {
+      return res.status(400).send({
+        success: false,
+        message: "Shop parameter is requred"
+      })
+    }
+
+    const data = await prisma.contactForm.findMany({
+      where: {
+        shop: shop.replace("https://", '')
+      }
+    })
+    return res.status(200).send(data)
+  } catch (error) {
+    console.log(`ERROR: Please See  ${error}`)
+    return res.status(200).send(`Error: ${Error}`)
+  }
+})
+
 
 app.get("/api/products/count", async (_req, res) => {
   const countData = await shopify.api.rest.Product.count({
@@ -48,6 +79,7 @@ app.get("/api/products/count", async (_req, res) => {
   });
   res.status(200).send(countData);
 });
+
 
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;

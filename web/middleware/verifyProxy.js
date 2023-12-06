@@ -1,10 +1,10 @@
-import crypto from "crypto"
+import crypto from "crypto";
 
 const verifyProxy = (req, res, next) => {
-    console.log('req._parsedUrl', req._parsedUrl)
-    console.log({ ReqQuery: req._parsedUrl })
+    console.log('req._parsedUrl:', req._parsedUrl);
+    console.log('req.query:', req.query);
 
-    const { signature } = req.query
+    const { signature } = req.query;
 
     const queryURI = req._parsedUrl.query
         .replace("/?", "")
@@ -22,11 +22,9 @@ const verifyProxy = (req, res, next) => {
     if (calculatedSignature === signature) {
         res.locals.user_shop = req.query.shop;
         next();
-
     } else {
         res.send(401);
     }
-
 };
 
 export default verifyProxy;
